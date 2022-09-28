@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      >
+    <head>
+        <title>SIGBI </title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!-- <!-- se crea este div que encapsule la 
+  tabla para hacer un if por medio de th y que  reciba solo datos que no sean null o vacio-> -->
+
+        <header th:replace="plantilla/layer :: header">            
+            
+        </header>
+        <a th:href="@{/agregar}"> Crear nueva persona</a>
+
+        <div th:if="${personas != null and !personas.empty}">
+
+            <table border="2">
+                <tr>
+                    <th> nombre</th>
+                    <th>apellido</th>
+                    <th>emal</th>
+                    <th>editar</th>
+                    <th>eliminar</th>
+                </tr>
+
+                <!-- th:each="persona: ${personas}" es como un for para i(persona) in personas-->
+
+
+                <tr th:each="persona : ${personas}"> 
+
+                    <td th:text="${persona.usuario_name}"></td>
+                    <td th:text="${persona.usuario_apellido}"></td>
+                    <td th:text="${persona.usuario_ocu}"></td>
+                    <td> <a th:href="@{/editar/}+${persona.usuario_id}" th:text="Editar"/> </td>
+                    <td> <a th:href="@{/eliminar/}+${persona.usuario_id}" th:text="Eliminar"/> </td>
+
+
+
+
+                </tr>
+
+
+            </table>
+        </div>
+
+        <div th:if="${personas == null or personas.empty}">
+            <!-- se crea este div fuera de la tabal para  hacer un if por medio de th
+                y que asi reciba el dato null y vacio y que muestre lo que esta dentro del div-->
+
+            <h1>LISTA DE PERSONAS ES VACIA</h1>
+
+
+        </div>
+
+
+<footer th:replace="plantilla/layer :: footer"> </footer>
+
+
+
+    </body>
+</html>

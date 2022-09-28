@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org ">
+    <head>
+        <title>datos de la persona</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+        <header th:replace="plantilla/layer :: header"> </header>
+   
+      <h1>datos de la persona</h1>
+        <a th:href="@{/}">Regresar</a>
+        <!-- asosciar el objeto persona a el html con th:objet -->
+        <form th:action="@{/guardar}" method="post" th:object="${persona}">
+
+            <input type="hidden" name="usuario_id" th:field="*{usuario_id}">
+
+            <label for="nombre">usuario_name</label>
+            <input name="nombre" type="text" th:field="*{usuario_name}"/> 
+            <br/>
+
+            <label for="apellido">usuario_apellido</label>
+            <input name="apellido" type="text" th:field="*{usuario_apellido}"/> 
+            <br/>
+            <label for="email">usuario_ocu:</label>
+            <input name="text" type="text" th:field="*{usuario_ocu}"/>
+            <br/>
+
+            <input type="submit" name="guardar" value="guardar"/>
+            <br/>
+
+
+
+
+        </form>
+
+       
+        <br/>
+        <footer th:replace="plantilla/layer :: footer"> </footer>
+    </body>
+</html>

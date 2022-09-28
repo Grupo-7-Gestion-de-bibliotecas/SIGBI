@@ -1,0 +1,120 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>SIGBI</title>
+        <!-- seleccion de icono local-->
+        <link th:href="@{/assets/favicon.ico}"   rel="icon" type="image/x-icon"  />
+        <!-- iconos de redes sociales-->
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{/css/index-styles.css}" rel="stylesheet" />
+        <script type="text/javascript" th:src="@{/js/newjavascript.js}"></script>
+
+    </head>
+    <body id="page-top">
+
+        <style>
+            .table{
+                margin: auto;
+                width: 60%;
+                margin-top:50px;
+            }
+            .text{
+                position: relative;
+                top:-60px
+
+
+            }
+            body{
+                
+                background-color: lightgray;
+            }
+                .but{
+                          
+                    position: relative;
+                        left: 48%;
+                        top: 60px
+                    
+                    
+                }
+                .table{
+                    
+        border-collapse: separate;
+        border-spacing: 10;
+        border: 1px solid black;
+        border-radius: 15px;
+        -moz-border-radius: 20px;
+        padding: 2px;
+        background-color: black;
+                }
+            
+
+
+
+        </style> 
+
+        <!-- Masthead-->
+        <header class="masthead bg-warning text-white text-center">
+            <div class="text">
+                <h1 style="font-size:50;">BASE DE DATOS LIBROS</h1>
+                <h5 style="font-size:20;" >EDITA Y ELIMINA LIBROS DE LA BASE DE DATOS</h5>
+            </div>
+
+
+
+
+
+        </header>
+
+
+
+
+        <div th:if="${jk != null and !jk.empty}" >
+
+            <table  class="table table-dark table-striped">
+                <thead >
+                    <tr >
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">AUTOR</th>
+                        <th scope="col">CANTIDAD</th>
+                         </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <!-- th:each="persona: ${personas}" es como un for para i(persona) in personas-->
+                    <tr th:each="book : ${jk}">
+                    <td th:text="${book.book_name}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.cantidad}"></td>
+                    <td> <a th:href="@{/editar/}+${book.book_id}" th:text="Editar"/> </td>
+                    <td> <a th:href="@{/eliminar/}+${book.book_id}" th:text="Eliminar"/> </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            
+            <br/>
+            
+            <div class="but">
+
+            <a  href="/">  <button type="button" class="btn btn-warning"> Home page </button>  </a>
+            
+            </div>
+            
+            <div th:if="${jk == null or jk.empty}">
+            <!-- se crea este div fuera de la tabal para  hacer un if por medio de th
+                y que asi reciba el dato null y vacio y que muestre lo que esta dentro del div-->
+
+            <h1>LISTA DE PERSONAS ES VACIA</h1>
+
+
+        </div>
+            </div>
+
+
+
+
+    </body>
+</html>
