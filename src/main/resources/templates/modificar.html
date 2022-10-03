@@ -12,19 +12,19 @@
       <h1>datos de la persona</h1>
         <a th:href="@{/}">Regresar</a>
         <!-- asosciar el objeto persona a el html con th:objet -->
-        <form th:action="@{/guardar}" method="post" th:object="${persona}">
+        <form th:action="@{/guardar}" method="post" th:object="${book}">
 
-            <input type="hidden" name="usuario_id" th:field="*{usuario_id}">
+            <input type="hidden" name="usuario_id" th:field="*{book_id}">
 
             <label for="nombre">usuario_name</label>
-            <input name="nombre" type="text" th:field="*{usuario_name}"/> 
+            <input name="nombre" type="text" th:field="*{book_name}"/> 
             <br/>
 
-            <label for="apellido">usuario_apellido</label>
-            <input name="apellido" type="text" th:field="*{usuario_apellido}"/> 
+            <label for="autor">usuario_apellido</label>
+            <input name="autor" type="text" th:field="*{author}"/> 
             <br/>
-            <label for="email">usuario_ocu:</label>
-            <input name="text" type="text" th:field="*{usuario_ocu}"/>
+            <label for="cant">usuario_ocu:</label>
+            <input name="cant" type="text" th:field="*{cantidad}"/>
             <br/>
 
             <input type="submit" name="guardar" value="guardar"/>
